@@ -1,0 +1,59 @@
+import React from 'react';
+import { DashboardIcon, AutomationIcon, SettingsIcon, ShieldIcon, LogoutIcon } from '../constants';
+import { useAuth } from '../auth/AuthContext';
+
+type View = 'dashboard' | 'automation' | 'settings' | 'exclusions';
+
+interface SidebarProps {
+    currentView: View;
+    setView: (view: View) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ currentView, setView }) => {
+    const { logout } = useAuth();
+    const navItems = [
+        { id: 'dashboard', icon: <DashboardIcon />, label: 'Tableau de bord' },
+        { id: 'automation', icon: <AutomationIcon />, label: 'Automation' },
+        { id: 'exclusions', icon: <ShieldIcon />, label: 'Exclusions' },
+        { id: 'settings', icon: <SettingsIcon />, label: 'Paramètres' },
+    ];
+
+    return (
+        <aside className="w-16 md:w-64 bg-jellyfin-dark-light p-2 md:p-4 flex flex-col transition-all duration-300">
+            <div className="flex items-center justify-center md:justify-start mb-10">
+                 <svg className="h-10 w-10 text-jellyfin-accent" viewBox="0 0 1024 1024" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M512 0C229.2 0 0 229.2 0 512s229.2 512 512 512 512-229.2 512-512S794.8 0 512 0zm0 960C264.7 960 64 759.3 64 512S264.7 64 512 64s448 200.7 448 448-200.7 448-448 448z" /><path d="M512 320c-106.1 0-192 85.9-192 192s85.9 192 192 192 192-85.9 192-192-85.9-192-192-192zm0 320c-70.7 0-128-57.3-128-128s57.3-128 128-128 128 57.3 128 128-57.3 128-128 128z" /></svg>
+                 <span className="hidden md:block text-2xl font-bold ml-3 text-white">Jellyfin CC</span>
+            </div>
+            <nav>
+                <ul>
+                    {navItems.map(item => (
+                        <li key={item.id}>
+                            <button
+                                onClick={() => setView(item.id as View)}
+                                className={`w-full flex items-center p-3 my-2 rounded-lg transition-colors ${
+                                    currentView === item.id
+                                        ? 'bg-jellyfin-accent text-white'
+                                        : 'text-gray-400 hover:bg-jellyfin-light hover:text-white'
+                                }`}
+                            >
+                                {item.icon}
+                                <span className="hidden md:block ml-4 font-semibold">{item.label}</span>
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+            <div className="mt-auto">
+                <button
+                    onClick={logout}
+                    className={'w-full flex items-center p-3 my-2 rounded-lg transition-colors text-gray-400 hover:bg-jellyfin-light hover:text-white'}
+                >
+                    <LogoutIcon />
+                    <span className="hidden md:block ml-4 font-semibold">Déconnexion</span>
+                </button>
+            </div>
+        </aside>
+    );
+};
+
+export default Sidebar;

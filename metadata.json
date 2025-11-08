@@ -1,0 +1,5 @@
+{
+  "name": "Jellyfin Control Center",
+  "description": "An application to manage and automate your Jellyfin and Jellyseerr instances. This tool allows for automatic deletion of content based on configurable rules, helping to manage your media library efficiently.",
+  "requestFramePermissions": []
+}
