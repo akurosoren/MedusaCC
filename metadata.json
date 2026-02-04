@@ -1,0 +1,5 @@
+{
+  "name": "Medusa",
+  "description": "An elegant application to manage and automate your Jellyfin ecosystem. Medusa allows for automatic deletion of content based on configurable rules, helping to manage your media library efficiently.",
+  "requestFramePermissions": []
+}
