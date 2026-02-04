@@ -4,6 +4,8 @@ Medusa est une application web élégante conçue pour vous donner un contrôle 
 
 L'objectif principal est de vous aider à gérer intelligemment votre espace de stockage en supprimant automatiquement le contenu ancien que vous ne regardez plus, tout en vous donnant un contrôle total sur ce qui est conservé.
 
+Site : https://medusa-cc.vercel.app/
+
 ## 🚀 Fonctionnalités
 
 *   **Tableau de bord dynamique :** Obtenez un aperçu rapide de l'état de connexion de vos services (Jellyfin, Radarr, Sonarr) et découvrez les derniers films et épisodes ajoutés à votre bibliothèque.
